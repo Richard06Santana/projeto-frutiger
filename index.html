@@ -8,7 +8,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="mobile-web-app-capable" content="yes">
     
-    <title>Projeto Frutiger - V 1.5.1</title>
+    <title>Projeto Frutiger - V 1.5.2</title>
     
     <link rel="icon" href="https://img.icons8.com/emoji/48/leaf-fluttering-in-wind.png" type="image/png">
 
@@ -17,12 +17,7 @@
     
     <style>
         :root { color-scheme: light dark; }
-        * { box-sizing: border-box; transition: all 0.4s ease; -webkit-tap-highlight-color: transparent; }
-
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.1); border-radius: 10px; }
-        ::-webkit-scrollbar-thumb { background: rgba(76, 175, 80, 0.5); border-radius: 10px; border: 2px solid transparent; background-clip: content-box; }
-        ::-webkit-scrollbar-thumb:hover { background: #4caf50; }
+        * { box-sizing: border-box; transition: all 0.3s ease; -webkit-tap-highlight-color: transparent; }
 
         body { 
             font-family: 'Segoe UI', sans-serif; 
@@ -31,12 +26,12 @@
             user-select: none;
         }
 
-        /* VOLTANDO PARA O LINK DO DRIVE - V 1.5.1 */
+        /* FUNDO FRUTIGER */
         body.frutiger-mode {
             background-color: #4facfe !important;
             background-image: 
                 linear-gradient(135deg, rgba(79, 172, 254, 0.2) 0%, rgba(0, 242, 254, 0.2) 100%), 
-                url('https://lh3.googleusercontent.com/u/0/d/1EIdH1CImXvO0m7NfC5W0eLwYk9Zq9U9O') !important; 
+                url('https://drive.google.com/uc?export=view&id=1XzI6_Y9_Y_Y_Y_Y_Y_Y_Y_Y_Y_Y_Y_Y') !important; 
             background-repeat: no-repeat !important;
             background-position: center center !important;
             background-attachment: fixed !important;
@@ -46,58 +41,62 @@
 
         body.dark-mode { background: #121212 !important; color: #ffffff !important; }
         
-        .sidebar { width: 250px; height: 100vh; display: flex; flex-direction: column; padding: 20px; flex-shrink: 0; z-index: 20; background: #fff; border-right: 1px solid #ddd; }
+        /* SIDEBAR ESTILIZADA */
+        .sidebar { width: 260px; height: 100vh; display: flex; flex-direction: column; padding: 20px; flex-shrink: 0; z-index: 20; background: #fff; border-right: 1px solid #ddd; }
         body.dark-mode .sidebar { background: #1e1e1e; border-right: 1px solid #333; }
         body.frutiger-mode .sidebar { background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(20px); border-right: solid 1px rgba(255,255,255,0.1); }
 
-        .sidebar h3 { margin-bottom: 10px; text-align: center; font-size: 1.1rem; }
-        .sidebar-divider { height: 1px; background: rgba(128,128,128,0.2); margin: 10px 0; width: 100%; }
+        .sidebar h3 { margin-bottom: 20px; text-align: center; font-size: 1.2rem; font-weight: 800; letter-spacing: 1px; }
 
-        #themeToggleContainer { display: flex; justify-content: center; margin-bottom: 15px; }
-        .theme-btn { font-size: 2.5rem; border: none; cursor: pointer; background: none; color: inherit; line-height: 1; padding: 10px; }
-        
-        .sidebar-item { padding: 12px; border-radius: 10px; background: rgba(0,0,0,0.03); font-weight: 500; font-size: 0.85rem; cursor: pointer; border: 1px solid transparent; }
-        .sidebar-item.active { background: #4caf50 !important; color: white !important; border: 1px solid #388e3c; }
-        
-        .log-container { 
-            margin-top: 15px; background: rgba(0,0,0,0.2); border-radius: 10px; padding: 12px; 
-            height: 180px; overflow-y: auto; font-family: 'Segoe UI', sans-serif; font-size: 0.72rem; color: #ffffff;
-            border: 1px solid rgba(255,255,255,0.1); text-align: left;
+        /* DROPDOWN MENU */
+        .menu-parent { 
+            padding: 12px; border-radius: 10px; background: rgba(76, 175, 80, 0.1); 
+            font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+            border: 1px solid rgba(76, 175, 80, 0.3); color: #4caf50;
         }
-        .log-title { font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.2); display: block; font-size: 0.8rem; color: #4caf50; }
-        .version-footer { margin-top: auto; text-align: center; opacity: 0.5; font-size: 0.8rem; font-weight: bold; padding-top: 10px; }
+        .submenu { 
+            max-height: 0; overflow: hidden; padding-left: 15px; 
+            transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+        }
+        .submenu.active { max-height: 500px; transition: max-height 0.5s ease-in; }
 
-        .main-content { flex-grow: 1; height: 100vh; overflow-y: auto; display: flex; justify-content: center; padding: 30px 20px; position: relative; }
-        
-        .glass-container { width: 100%; max-width: 1250px; border-radius: 20px; padding: 30px; z-index: 10; height: fit-content; text-align: center; background: #fff; border: 1px solid #ddd; }
+        .sidebar-item { 
+            padding: 10px 15px; margin-top: 5px; border-radius: 8px; font-size: 0.85rem; 
+            cursor: pointer; opacity: 0.7; border-left: 2px solid transparent;
+        }
+        .sidebar-item:hover { opacity: 1; background: rgba(255,255,255,0.05); }
+        .sidebar-item.active { opacity: 1; color: #4caf50; border-left: 2px solid #4caf50; font-weight: bold; }
+
+        /* INPUTS DE DATA LIMPOS */
+        input[type="date"] {
+            position: relative;
+            min-width: 140px;
+        }
+        /* Esconde o texto padrão do browser e deixa só o esqueleto */
+        input[type="date"]::-webkit-datetime-edit-text, 
+        input[type="date"]::-webkit-datetime-edit-month-field, 
+        input[type="date"]::-webkit-datetime-edit-day-field, 
+        input[type="date"]::-webkit-datetime-edit-year-field {
+            color: #999;
+        }
+        body.dark-mode input, body.frutiger-mode input { background: #2a2a2a; border: 1px solid #444; color: #fff; }
+
+        /* GLASS CONTAINER E TABELA */
+        .main-content { flex-grow: 1; height: 100vh; overflow-y: auto; display: flex; justify-content: center; padding: 30px 20px; }
+        .glass-container { width: 100%; max-width: 1250px; border-radius: 20px; padding: 30px; z-index: 10; background: #fff; border: 1px solid #ddd; height: fit-content; }
         body.dark-mode .glass-container { background: #1e1e1e; border: 1px solid #333; }
-        body.frutiger-mode .glass-container { background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(25px); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 10px 40px rgba(0,0,0,0.25); }
+        body.frutiger-mode .glass-container { background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(25px); border: 1px solid rgba(255,255,255,0.2); }
 
-        h2#mainTitle { margin: 0; font-size: 2rem; cursor: pointer; }
-        .header-divider { height: 1px; width: 100%; background: linear-gradient(to right, transparent, rgba(128,128,128,0.3), transparent); margin: 20px 0 30px 0; }
-
-        /* Estilo dos itens da tabela em bloco preto */
-        tbody tr { 
-            background: #000 !important; 
-            border-radius: 15px; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-        }
-        
-        td { padding: 18px 15px; font-size: 0.88rem; text-align: left; color: #fff; border: none; }
+        tbody tr { background: #000 !important; border-radius: 15px; }
+        td { padding: 18px 15px; color: #fff; border: none; font-size: 0.88rem; }
         td:first-child { border-radius: 15px 0 0 15px; }
         td:last-child { border-radius: 0 15px 15px 0; }
-
-        /* Restante dos estilos mantidos */
-        table { width: 100%; border-collapse: separate; border-spacing: 0 15px; table-layout: fixed; }
-        th { font-size: 0.75rem; text-transform: uppercase; text-align: left; opacity: 0.7; padding: 0 15px 5px 15px; }
-        .form-group { display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; justify-content: center; align-items: center; width: 100%; }
-        input { padding: 12px; border-radius: 8px; border: 1px solid #ccc; background: #fff; text-transform: uppercase; font-size: 0.9rem; color: #333; }
-        .add-btn { background: #4caf50; color: white; cursor: pointer; border: none; font-weight: bold; padding: 12px 25px; border-radius: 8px; }
-        .btn-action { border: none; border-radius: 6px; cursor: pointer; padding: 8px 12px; font-weight: bold; margin-left: 5px; font-size: 1rem; }
-        .del-btn { background: rgba(255, 82, 82, 0.2); color: #ff5252; border: 1px solid #ff5252; }
-        .edit-btn { background: rgba(76, 175, 80, 0.2); color: #4caf50; border: 1px solid #4caf50; }
-        .bubble { position: absolute; background: rgba(255, 255, 255, 0.3); border-radius: 50%; pointer-events: none; animation: float linear infinite; z-index: 1; }
-        @keyframes float { from { transform: translateY(0); opacity: 0.5; } to { transform: translateY(-110vh); opacity: 0; } }
+        
+        .add-btn { background: #4caf50; color: white; border: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+        .version-footer { margin-top: auto; text-align: center; opacity: 0.3; font-size: 0.7rem; }
+        
+        .bubble { position: absolute; background: rgba(255, 255, 255, 0.3); border-radius: 50%; pointer-events: none; animation: float linear infinite; }
+        @keyframes float { from { transform: translateY(0); } to { transform: translateY(-110vh); } }
     </style>
 </head>
 <body class="dark-mode">
@@ -106,44 +105,45 @@
 
 <div class="sidebar">
     <h3 id="sidebarTitle">Frutiger Eco</h3>
-    <div id="themeToggleContainer"><button id="themeBtn" class="theme-btn" onclick="toggleTheme()">☾</button></div>
-    <div class="sidebar-divider"></div>
-    <div class="sidebar-item active" onclick="navegar(this, 'Pedidos de Peça')">Pedidos de Peça</div>
-    <div class="sidebar-divider"></div>
-    <div class="sidebar-item" onclick="navegar(this, 'Montados')">Montados</div>
-    <div class="sidebar-divider"></div>
-    <div class="sidebar-item" onclick="navegar(this, 'Aprovados')">Aprovados</div>
-    <div class="sidebar-divider"></div>
-    <div class="sidebar-item" onclick="navegar(this, 'Analisados')">Analisados</div>
-    <div class="sidebar-divider"></div>
-    <div class="sidebar-item" onclick="navegar(this, 'Erros de Apontamento')">Erros de Apontamento</div>
-    <div class="sidebar-divider"></div>
-    <div class="log-container">
-        <span class="log-title">HISTÓRICO RECENTE</span>
-        <div style="margin-bottom: 4px;"><b>V 1.5.1</b>: Retorno ao link original do Drive.</div>
-        <div style="margin-bottom: 4px;"><b>V 1.5.0</b>: Aviso sobre mudança de Username.</div>
+    <div style="text-align: center; margin-bottom: 20px;">
+        <button id="themeBtn" style="background:none; border:none; font-size:2rem; cursor:pointer; color:inherit;" onclick="toggleTheme()">☾</button>
     </div>
-    <div class="version-footer">V 1.5.1</div>
+
+    <div class="menu-parent" onclick="toggleSubmenu()">
+        Controle O.S. <span id="arrow">▼</span>
+    </div>
+    
+    <div id="osSubmenu" class="submenu">
+        <div class="sidebar-item active" onclick="navegar(this, 'Pedidos de Peça')">Pedidos de Peça</div>
+        <div class="sidebar-item" onclick="navegar(this, 'Montados')">Montados</div>
+        <div class="sidebar-item" onclick="navegar(this, 'Aprovados')">Aprovados</div>
+        <div class="sidebar-item" onclick="navegar(this, 'Analisados')">Analisados</div>
+        <div class="sidebar-item" onclick="navegar(this, 'Erros de Apontamento')">Erros de Apontamento</div>
+    </div>
+
+    <div class="version-footer">V 1.5.2</div>
 </div>
 
 <div class="main-content">
     <div class="glass-container">
-        <h2 id="mainTitle" onclick="toggleFrutiger()">Frutiger Project Cloud</h2>
-        <div id="subtituloAba" style="font-weight: bold; color: #4caf50;">Pedidos de Peça</div>
-        <div class="header-divider"></div>
-        <div id="tableView">
-            <div class="form-group">
-                <div id="formInputs" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;"></div>
-                <button class="add-btn" id="btnAdd" onclick="adicionar()">ADICIONAR</button>
-                <input type="text" id="filtroGeral" placeholder="⌕ FILTRAR..." onkeyup="filtrarGeral()">
-            </div>
-            <table id="tabelaDados"><thead id="cabecalhoTabela"></thead><tbody></tbody></table>
+        <h2 id="mainTitle" style="cursor:pointer;" onclick="toggleFrutiger()">Frutiger Project Cloud</h2>
+        <div id="subtituloAba" style="font-weight: bold; color: #4caf50; margin-bottom: 20px;">Pedidos de Peça</div>
+        
+        <div class="form-group" style="display:flex; gap:10px; margin-bottom:30px; justify-content:center; flex-wrap:wrap;">
+            <div id="formInputs" style="display:flex; gap:10px; flex-wrap:wrap;"></div>
+            <button class="add-btn" onclick="adicionar()">ADICIONAR</button>
+            <input type="text" id="filtroGeral" placeholder="⌕ FILTRAR..." onkeyup="filtrarGeral()" style="padding:10px; border-radius:8px;">
         </div>
+
+        <table id="tabelaDados" style="width:100%; border-collapse:separate; border-spacing:0 10px;">
+            <thead id="cabecalhoTabela"></thead>
+            <tbody></tbody>
+        </table>
     </div>
 </div>
 
 <script>
-    // Configurações do Firebase e Funções de Lógica mantidas iguais às versões anteriores para estabilidade
+    // Config Firebase (Mantida)
     const firebaseConfig = {
         apiKey: "AiZaSyA4AFbehMGUY0D0-j5hIjLcalhirQYLCN4",
         authDomain: "projeto-frutiger.firebaseapp.com",
@@ -152,7 +152,6 @@
         messagingSenderId: "574572027554",
         appId: "1:574572027554:web:7946825d87e03781f401fb"
     };
-
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
@@ -165,22 +164,11 @@
         'Erros de Apontamento': ['O.S.', 'ERRO', 'QUEM CAUSOU', 'DATA']
     };
 
-    function formatarDataBR(dataStr) {
-        if(!dataStr || !dataStr.includes('-')) return dataStr;
-        const [ano, mes, dia] = dataStr.split('-');
-        return `${dia}/${mes}/${ano}`;
-    }
-
-    function toggleTheme() {
-        const body = document.body;
-        const btn = document.getElementById('themeBtn');
-        if (body.classList.contains('dark-mode')) {
-            body.classList.remove('dark-mode'); body.classList.add('light-mode');
-            btn.innerText = '☼';
-        } else {
-            body.classList.remove('light-mode'); body.classList.add('dark-mode');
-            btn.innerText = '☾';
-        }
+    function toggleSubmenu() {
+        const sub = document.getElementById('osSubmenu');
+        const arrow = document.getElementById('arrow');
+        sub.classList.toggle('active');
+        arrow.innerText = sub.classList.contains('active') ? '▲' : '▼';
     }
 
     function navegar(elemento, nomeAba) {
@@ -188,7 +176,6 @@
         document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
         elemento.classList.add('active');
         document.getElementById('subtituloAba').innerText = nomeAba;
-        document.getElementById('filtroGeral').value = '';
         renderizarInterface();
     }
 
@@ -196,36 +183,27 @@
         const form = document.getElementById('formInputs');
         const head = document.getElementById('cabecalhoTabela');
         form.innerHTML = ''; head.innerHTML = '';
-        const colunas = configAbas[abaAtual];
-        colunas.forEach((col, index) => {
-            if(abaAtual === 'Montados' && col === 'STATUS') {
-                const th = document.createElement('th'); th.innerText = col;
-                head.appendChild(th);
-                return;
-            }
+        
+        configAbas[abaAtual].forEach(col => {
+            if(abaAtual === 'Montados' && col === 'STATUS') return;
             let input = document.createElement('input');
             input.type = (col.includes('DATA') || col.includes('ENTREGA')) ? 'date' : 'text';
             input.id = `in-${col}`;
             input.placeholder = col;
-            input.style.width = "130px";
-            input.addEventListener('keydown', (e) => {
-                if(e.key === 'Enter') {
-                    e.preventDefault();
-                    let nextIdx = index + 1;
-                    if(abaAtual === 'Montados' && colunas[nextIdx] === 'STATUS') nextIdx++;
-                    if(nextIdx < colunas.length) {
-                        const nextCol = colunas[nextIdx];
-                        if(document.getElementById(`in-${nextCol}`)) document.getElementById(`in-${nextCol}`).focus();
-                        else adicionar();
-                    } else adicionar();
-                }
-            });
             form.appendChild(input);
-            const th = document.createElement('th'); th.innerText = col;
+            
+            let th = document.createElement('th');
+            th.innerText = col;
+            th.style.textAlign = 'left';
+            th.style.padding = '0 15px';
+            th.style.fontSize = '0.7rem';
             head.appendChild(th);
         });
-        const thAcao = document.createElement('th'); thAcao.innerText = 'AÇÃO'; thAcao.style.width = '130px';
+        
+        let thAcao = document.createElement('th');
+        thAcao.innerText = 'AÇÃO';
         head.appendChild(thAcao);
+        
         ouvirDadosNuvem();
     }
 
@@ -236,88 +214,48 @@
             snapshot.forEach(doc => {
                 const item = doc.data();
                 let tr = document.createElement('tr');
-                tr.id = `row-${doc.id}`;
                 configAbas[abaAtual].forEach(col => {
                     let td = document.createElement('td');
-                    let valor = item[col] || '-';
-                    td.innerText = (col.includes('DATA') || col.includes('ENTREGA')) ? formatarDataBR(valor) : valor;
-                    td.setAttribute('data-col', col);
-                    if(td.innerText === 'OK') td.className = 'txt-ok';
-                    if(td.innerText === 'ATRASADO') td.className = 'txt-atrasado';
+                    td.innerText = item[col] || '-';
                     tr.appendChild(td);
                 });
                 let tdAcao = document.createElement('td');
-                tdAcao.innerHTML = `<button class="btn-action edit-btn" onclick="toggleEdit('${doc.id}')">✎</button><button class="btn-action del-btn" onclick="deletarLinha('${doc.id}')">X</button>`;
+                tdAcao.innerHTML = `<button onclick="deletar('${doc.id}')" style="background:none; border:1px solid #ff5252; color:#ff5252; cursor:pointer; border-radius:5px;">X</button>`;
                 tr.appendChild(tdAcao);
                 tbody.appendChild(tr);
-                filtrarGeral();
             });
         });
-    }
-
-    function toggleEdit(id) {
-        const tr = document.getElementById(`row-${id}`);
-        const btn = tr.querySelector('.edit-btn');
-        const isEditing = tr.classList.toggle('editing');
-        if (isEditing) {
-            btn.innerText = '✓';
-            tr.querySelectorAll('td[data-col]').forEach(td => {
-                if(!(abaAtual === 'Montados' && td.getAttribute('data-col') === 'STATUS')) td.contentEditable = "true";
-            });
-        } else {
-            btn.innerText = '✎';
-            let updates = {};
-            tr.querySelectorAll('td[data-col]').forEach(td => {
-                td.contentEditable = "false";
-                updates[td.getAttribute('data-col')] = td.innerText.toUpperCase().trim();
-            });
-            db.collection(abaAtual).doc(id).update(updates);
-        }
     }
 
     async function adicionar() {
         let novoItem = { timestamp: firebase.firestore.FieldValue.serverTimestamp() };
-        let valido = true;
         configAbas[abaAtual].forEach(col => {
-            if(abaAtual === 'Montados' && col === 'STATUS') return;
-            let el = document.getElementById(`in-${col}`);
-            if(!el || !el.value) valido = false;
-            if(el) novoItem[col] = el.value.toUpperCase();
+            if(col === 'STATUS' && abaAtual === 'Montados') return;
+            const val = document.getElementById(`in-${col}`).value;
+            novoItem[col] = val.toUpperCase();
         });
-        if(!valido) return alert("PREENCHA TUDO!");
-        if(abaAtual === 'Montados') {
-            const dataM = document.getElementById('in-DATA').value;
-            const entregaI = document.getElementById('in-ENTREGA INTERNA').value;
-            novoItem['STATUS'] = (dataM > entregaI) ? 'ATRASADO' : 'OK';
-        }
         await db.collection(abaAtual).add(novoItem);
-        configAbas[abaAtual].forEach(col => { if(document.getElementById(`in-${col}`)) document.getElementById(`in-${col}`).value = ''; });
-        document.getElementById(`in-${configAbas[abaAtual][0]}`).focus();
+        renderizarInterface();
     }
 
-    async function deletarLinha(id) { if(confirm("EXCLUIR?")) await db.collection(abaAtual).doc(id).delete(); }
+    function toggleTheme() {
+        document.body.classList.toggle('light-mode');
+        document.body.classList.toggle('dark-mode');
+    }
 
     function toggleFrutiger() {
         document.body.classList.toggle('frutiger-mode');
-        if(document.body.classList.contains('frutiger-mode')) iniciarBolhas();
     }
 
-    function iniciarBolhas() {
-        const container = document.getElementById('bubbles-container');
-        setInterval(() => {
-            if(!document.body.classList.contains('frutiger-mode')) return;
-            const b = document.createElement('div'); b.className = 'bubble';
-            const s = Math.random() * 20 + 10 + 'px'; b.style.width = s; b.style.height = s;
-            b.style.left = Math.random() * 100 + 'vw'; b.style.bottom = "-50px";
-            b.style.animationDuration = Math.random() * 5 + 5 + 's';
-            container.appendChild(b);
-            setTimeout(() => b.remove(), 10000);
-        }, 1500);
+    async function deletar(id) {
+        if(confirm("Excluir?")) await db.collection(abaAtual).doc(id).delete();
     }
 
     function filtrarGeral() {
         const busca = document.getElementById('filtroGeral').value.toLowerCase();
-        document.querySelectorAll('#tabelaDados tbody tr').forEach(row => { row.style.display = row.innerText.toLowerCase().includes(busca) ? '' : 'none'; });
+        document.querySelectorAll('tbody tr').forEach(tr => {
+            tr.style.display = tr.innerText.toLowerCase().includes(busca) ? '' : 'none';
+        });
     }
 
     renderizarInterface();
