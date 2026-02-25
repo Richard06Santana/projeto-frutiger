@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Projeto Frutiger - V 1.1.2</title>
+    <title>Projeto Frutiger - V 1.1.3</title>
     
     <link rel="icon" href="https://img.icons8.com/emoji/48/leaf-fluttering-in-wind.png" type="image/png">
 
@@ -34,6 +34,15 @@
             background-size: cover !important; 
             color: #fff !important;
         }
+
+        /* AJUSTE DE FONTES CLARAS NO MODO FRUTIGER */
+        body.frutiger-mode .glass-container h2,
+        body.frutiger-mode #corpoTabela td,
+        body.frutiger-mode #cabecalhoTabela th {
+            color: #ffffff !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        body.frutiger-mode #cabecalhoTabela th { opacity: 0.9 !important; }
 
         /* SIDEBAR */
         .sidebar { 
@@ -135,10 +144,10 @@
 
     <div class="log-container">
         <strong style="color: #4caf50; display: block; margin-bottom: 5px;">HISTORY</strong>
-        <b>V 1.1.2</b>: White divider lines in tables.<br>
-        <b>V 1.1.1</b>: Status colors in Montados.
+        <b>V 1.1.3</b>: Brighter fonts in Frutiger Mode.<br>
+        <b>V 1.1.2</b>: White divider lines in tables.
     </div>
-    <div class="version-text" style="text-align: center; opacity: 0.4; font-size: 0.7rem; font-weight: bold;">V 1.1.2</div>
+    <div class="version-text" style="text-align: center; opacity: 0.4; font-size: 0.7rem; font-weight: bold;">V 1.1.3</div>
 </div>
 
 <div class="main-content">
@@ -157,7 +166,8 @@
             <input type="text" id="filtroGeral" placeholder="⌕ PESQUISAR..." onkeyup="filtrarGeral()">
         </div>
 
-        <table style="width:100%; border-collapse:separate; border-spacing:0 0px;"> <thead id="cabecalhoTabela"></thead>
+        <table style="width:100%; border-collapse:separate; border-spacing:0 0px;">
+            <thead id="cabecalhoTabela"></thead>
             <tbody id="corpoTabela"></tbody>
         </table>
     </div>
